@@ -24,3 +24,11 @@ body {
   display: flex;
   align-items: center;
 }
+/* 공용 a 태그 꾸미기 */
+a {
+  font-size: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
