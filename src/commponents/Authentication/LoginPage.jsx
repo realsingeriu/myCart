@@ -19,7 +19,7 @@ const LoginPage = () => {
   const passwordRef = useRef(null);
   return (
     <section className="align_center form_page">
-      <form className="authentication_form">
+      <form onSubmit={handleSubmit} className="authentication_form">
         <h2>로그인 폼</h2>
         <div className="form_inputs">
           <div>
