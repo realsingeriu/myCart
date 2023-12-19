@@ -15,6 +15,7 @@ const LoginPage = () => {
     setUser({ email: "", password: "" });
   };
 
+  // 리액트에서 특정 태그를 선택하는 방법
   const passwordRef = useRef(null);
   return (
     <section className="align_center form_page">
