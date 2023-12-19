@@ -1,5 +1,4 @@
 import "./HeroSection.css";
-import iphone from "../../assets/iphone-14-pro.webp";
 
 const HeroSection = ({ title, subtitle, link, image }) => {
   return (
