@@ -1,4 +1,5 @@
 .app {
+  /* 그리드는 열(가로) 또는 줄(세로)로 나눔  */
   display: grid;
   grid-template-rows: 80px auto;
 }
