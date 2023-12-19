@@ -38,20 +38,20 @@ const CartPage = () => {
         <tbody>
           <tr>
             <td>총 금액</td>
-            <td>1200,000 원</td>
+            <td>1,200,000 원</td>
           </tr>
           <tr>
             <td>배송비</td>
             <td>5,000 원</td>
           </tr>
           <tr className="cart_bill_final">
-            <td>결재금액</td>
-            <td>1205,000 원</td>
+            <td>결제금액</td>
+            <td>1,205,000 원</td>
           </tr>
         </tbody>
       </table>
 
-      <button className="search_button checkout_button">결재하기</button>
+      <button className="search_button checkout_button">결제하기</button>
     </section>
   );
 };
