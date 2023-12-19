@@ -1,4 +1,4 @@
-import "./ProductCard.css";
+import "./ProductsCard.css";
 import iphone from "../../assets/iphone.jpg";
 import star from "../../assets/white-star.png";
 import basket from "../../assets/basket.png";
