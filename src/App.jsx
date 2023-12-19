@@ -14,8 +14,8 @@ const App = () => {
         {/* <HomePage /> */}
         {/* <ProductsPage /> */}
         {/* <SingleProductPage /> */}
-        <CartPage />
-        {/* <LoginPage /> */}
+        {/* <CartPage /> */}
+        <LoginPage />
       </main>
     </div>
   );
