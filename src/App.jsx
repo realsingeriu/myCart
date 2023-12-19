@@ -1,9 +1,10 @@
 import "./App.css";
+import Navbar from "./commponents/Navbar/Navbar";
 
 const App = () => {
   return (
     <div className="app">
-      <nav>Navbar</nav>
+      <Navbar />
       <main>라우팅</main>
     </div>
   );
