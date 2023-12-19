@@ -1,4 +1,4 @@
-import ProductCard from "../Products/ProductsCard";
+import ProductCard from "../Products/ProductCard";
 import "./FeaturedProducts.css";
 
 const FeaturedProducts = () => {
