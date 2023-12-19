@@ -5,7 +5,10 @@ import user from "../../assets/user.webp";
 import { useState } from "react";
 
 const SignupPage = () => {
+  // 프로필 이미지 상태 관리
   const [profilePic, setProfilePic] = useState(null);
+
+  // react-hook-form 에서 제공하는 hook 사용
   const {
     register,
     handleSubmit,
@@ -13,8 +16,10 @@ const SignupPage = () => {
     watch,
   } = useForm();
 
+  // 폼 데이터 제출 시 호출되는 함수
   const submitData = (formData) => console.log(formData);
 
+  // 프로필 이미지 상태 확인
   console.log(profilePic);
 
   return (
@@ -24,8 +29,9 @@ const SignupPage = () => {
         onSubmit={handleSubmit(submitData)}
       >
         <h2>회원가입 폼</h2>
-
+        {/* 이미지 업로드 섹션 */}
         <div className="image_input_section">
+          {/* 이미지 미리 보기  */}
           <div className="image_preview">
             <img
               src={profilePic ? URL.createObjectURL(profilePic) : user}
@@ -33,9 +39,11 @@ const SignupPage = () => {
               alt="Profile Preview"
             />
           </div>
+          {/* 이미지 업로드 레이블  */}
           <label htmlFor="file-ip-1" className="image_label">
             이미지 업로드
           </label>
+          {/* 이미지 업로드 입력 필드  */}
           <input
             onChange={(e) => setProfilePic(e.target.files[0])}
             type="file"
@@ -44,8 +52,9 @@ const SignupPage = () => {
           />
         </div>
 
-        {/* Form Inputs */}
+        {/* 폼 입력 항목*/}
         <div className="form_inputs signup_form_input">
+          {/* 이름 입력 */}
           <div>
             <label htmlFor="name">Name</label>
             <input
@@ -64,6 +73,7 @@ const SignupPage = () => {
             )}
           </div>
 
+          {/* 이메일 입력 */}
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -83,7 +93,7 @@ const SignupPage = () => {
               <em className="form_error">{errors.email.message}</em>
             )}
           </div>
-
+          {/* 패스워드 입력 */}
           <div>
             <label htmlFor="password">Password</label>
             <input
@@ -100,7 +110,7 @@ const SignupPage = () => {
               <em className="form_error">{errors.password.message}</em>
             )}
           </div>
-
+          {/* 패스워드 확인 입력  */}
           <div>
             <label htmlFor="cpassword">Confirm Password</label>
             <input
@@ -121,7 +131,7 @@ const SignupPage = () => {
               <em className="form_error">{errors.confirmPassword.message}</em>
             )}
           </div>
-
+          {/* 배송주소 입력 */}
           <div className="signup_textares_section">
             <label htmlFor="address">Delivery Address</label>
             <textarea
@@ -138,7 +148,7 @@ const SignupPage = () => {
             )}
           </div>
         </div>
-
+        {/* 입력 완료 버튼  */}
         <button className="search_button form_submit" type="submit">
           Submit
         </button>
