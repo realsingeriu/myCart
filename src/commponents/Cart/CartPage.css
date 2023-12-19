@@ -28,3 +28,39 @@
   height: 35px;
   cursor: pointer;
 }
+/* 결제할 금액 및 결제하기 버튼 css */
+.cart_bill {
+  align-self: flex-end;
+  width: 400px;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin-top: 16px;
+  background-color: #fff;
+}
+
+.cart_bill td {
+  padding: 12px 20px;
+  border: 3px solid #e5e5e5;
+}
+
+.cart_bill td:last-child {
+  text-align: end;
+  width: 250px;
+}
+
+.cart_bill_final {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.checkout_button {
+  align-self: flex-end;
+  height: 38px !important;
+  margin: 16px 0;
+  padding: 0 16px !important;
+}
+
+.table_quantity_input {
+  height: 50px;
+  justify-content: center;
+}
