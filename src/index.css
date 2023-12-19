@@ -18,3 +18,9 @@ body {
   font-size: 16px;
   background-color: #f6f8fa;
 }
+
+/* 공용 css 높이(세로) 가운데 정렬 */
+.align_center {
+  display: flex;
+  align-items: center;
+}
