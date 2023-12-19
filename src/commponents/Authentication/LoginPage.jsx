@@ -3,19 +3,15 @@ import { useRef, useState } from "react";
 import "./LoginPage.css";
 
 const LoginPage = () => {
-  // 리액트에서 특정 태그를 선택하는 방법
-  const passwordRef = useRef(null);
+  // // 리액트에서 특정 태그를 선택하는 방법
+  // const passwordRef = useRef(null);
 
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const submitData = (formData) => {
     console.log(formData);
