@@ -2,3 +2,8 @@
   width: 25px;
   margin-left: 5px;
 }
+
+/* 네브링크로 클릭시 active 클래스가 들어가므로  */
+.navbar_links > a.active {
+  font-weight: 600;
+}

@@ -1,10 +1,11 @@
+import { NavLink } from "react-router-dom";
 import "./LinkWithIcon.css";
 
 const LinkWithIcon = ({ title, link, emoji }) => {
   return (
-    <a href={link} className="align_center">
+    <NavLink to={link} className="align_center">
       {title} <img src={emoji} alt="" className="link_emoji" />
-    </a>
+    </NavLink>
   );
 };
 
