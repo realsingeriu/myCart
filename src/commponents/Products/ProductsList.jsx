@@ -5,6 +5,7 @@ import apiClient from "../../utils/api-client";
 import useData from "../../Hook/useData";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 import { useSearchParams } from "react-router-dom";
+import Pagination from "../Common/Pagination";
 
 const ProductsList = () => {
   const [search, setSearch] = useSearchParams();
@@ -54,8 +55,16 @@ const ProductsList = () => {
               stock={product.stock}
             />
           ))}
-        <button onClick={() => handlePageChange(2)}>페이지 2</button>
       </div>
+      {/* Pagination 추가 */}
+      {data && (
+        <Pagination
+          total={data.totalProducts}
+          perPage={8}
+          onClick={handlePageChange}
+          currentPage={page}
+        />
+      )}
     </section>
   );
 };
