@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
 import "./LoginPage.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   // // 리액트에서 특정 태그를 선택하는 방법
   // const passwordRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     email: "",
@@ -22,6 +25,7 @@ const LoginPage = () => {
 
     // submit 버튼 누르면 상태 초기화
     setUser({ email: "", password: "" });
+    navigate("/"); // 로그인 성공 후 홈으로 이동
   };
 
   // const handleSubmit = (e) => {
