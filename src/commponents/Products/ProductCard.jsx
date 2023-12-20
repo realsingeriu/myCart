@@ -16,7 +16,7 @@ const ProductCard = ({
   return (
     <article className="product_card">
       <div className="product_image">
-        <Link to={`product/${id}`}>
+        <Link to={`/product/${id}`}>
           <img
             src={`http://localhost:5000/products/${image}`}
             alt="product image"
