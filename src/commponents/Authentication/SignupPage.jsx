@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import "./SignupPage.css";
 import user from "../../assets/user.webp";
 import { useState } from "react";
+import { signup } from "../../Service/useService";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   // 프로필 이미지 상태 관리
   const [profilePic, setProfilePic] = useState(null);
 
@@ -16,8 +19,13 @@ const SignupPage = () => {
     watch,
   } = useForm();
 
-  // 폼 데이터 제출 시 호출되는 함수
-  const submitData = (formData) => console.log(formData);
+  // 폼입력창에 작성한 데이터 객체 formData와 이미지파일을 signup 함수에 전달
+  const submitData = async (formData) => {
+    await signup(formData, profilePic);
+
+    // 로그인 페이지로 이동
+    navigate("/login");
+  };
 
   // 프로필 이미지 상태 확인
   console.log(profilePic);
