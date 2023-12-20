@@ -9,16 +9,22 @@ import { useSearchParams } from "react-router-dom";
 const ProductsList = () => {
   const [search, setSearch] = useSearchParams();
   const category = search.get("category");
+  const page = search.get("page");
   const { data, error, isLoading } = useData(
     "/products",
     {
       params: {
         category,
+        page,
       },
     },
-    [category]
+    [category, page]
   );
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const handlePageChange = (page) => {
+    const currentParams = Object.fromEntries([...search]);
+    setSearch({ ...currentParams, page: page });
+  };
 
   return (
     <section className="products_list_section">
@@ -48,6 +54,7 @@ const ProductsList = () => {
               stock={product.stock}
             />
           ))}
+        <button onClick={() => handlePageChange(2)}>페이지 2</button>
       </div>
     </section>
   );
