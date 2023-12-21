@@ -9,7 +9,7 @@ import ProductsPage from "./commponents/Products/ProductsPage";
 import Routing from "./commponents/Routing/Routing";
 import SingleProductPage from "./commponents/SingleProduct/SingleProductPage";
 import { jwtDecode } from "jwt-decode";
-import { addToCartAPI } from "./Service/cartServices";
+import { addToCartAPI, getCartAPI } from "./Service/cartServices";
 import setAuthToken from "./utils/setAuthToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -55,13 +55,27 @@ const App = () => {
     }
   }, []);
 
+  const getCart = () => {
+    getCartAPI()
+      .then((res) => {
+        setCart(res.data);
+      })
+      .catch((err) => {
+        toast.error("카트 가져오기에 실패했습니다.");
+      });
+  };
+
+  useEffect(() => {
+    getCart();
+  }, [user]);
+
   return (
     <div className="app">
       {/* 유저정보를 app에서 navbar로 전달 */}
       <Navbar user={user} cartCount={cart.length} />
       <main>
         <ToastContainer position="bottom-right" />
-        <Routing addTocart={addTocart} />
+        <Routing addTocart={addTocart} cart={cart} />
       </main>
     </div>
   );
