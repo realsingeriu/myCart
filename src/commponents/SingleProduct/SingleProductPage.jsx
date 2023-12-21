@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../Common/Loader";
 import useData from "../../Hook/useData";
 
-const SingleProductPage = () => {
+const SingleProductPage = ({ addToCart }) => {
   // 처음 시작 이미지 번호는 0 => productImage
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -28,41 +28,6 @@ const SingleProductPage = () => {
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
-  };
-
-  // 장바구니 추가 로직
-  const addToCart = () => {
-    // 로컬 스토리지에서 저장된 장바구니 정보 가져오기
-    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    // 현재 상품 정보
-    const selectedProduct = {
-      id: product._id,
-      title: product.title,
-      price: product.price,
-      quantity: quantity,
-    };
-
-    // 이미 장바구니에 있는지 확인
-    const existingProductIndex = existingCart.findIndex(
-      (item) => item.id === selectedProduct.id
-    );
-
-    if (existingProductIndex !== -1) {
-      // 이미 장바구니에 있는 경우 수량 증가
-      existingCart[existingProductIndex].quantity += quantity;
-    } else {
-      // 장바구니에 없는 경우 새로 추가
-      existingCart.push(selectedProduct);
-    }
-
-    // 업데이트된 장바구니 정보를 로컬 스토리지에 저장
-    localStorage.setItem("cart", JSON.stringify(existingCart));
-
-    // 장바구니에 추가되었다는 알림 등을 추가할 수도 있습니다.
-
-    // 추가 후 구매개수 초기화
-    setQuantity(1);
   };
 
   return (
@@ -107,7 +72,10 @@ const SingleProductPage = () => {
               />
             </div>
 
-            <button className="search_button add_cart" onClick={addToCart}>
+            <button
+              className="search_button add_cart"
+              onClick={() => addToCart(product, quantity)}
+            >
               장바구니 추가
             </button>
           </div>

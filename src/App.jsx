@@ -12,6 +12,10 @@ import { jwtDecode } from "jwt-decode";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [cart, setCart] = useState([]);
+  const addTocart = (product, quantity) => {
+    setCart([...cart, { product, quantity }]);
+  };
 
   useEffect(() => {
     //시작시 로컬스토리지의 토큰정보를 읽어옴
@@ -30,9 +34,9 @@ const App = () => {
   return (
     <div className="app">
       {/* 유저정보를 app에서 navbar로 전달 */}
-      <Navbar user={user} />
+      <Navbar user={user} cartCount={cart.length} />
       <main>
-        <Routing />
+        <Routing addTocart={addTocart} />
       </main>
     </div>
   );
