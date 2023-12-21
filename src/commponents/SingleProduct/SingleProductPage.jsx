@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../Common/Loader";
 import useData from "../../Hook/useData";
 
-const SingleProductPage = ({ addToCart }) => {
+const SingleProductPage = ({ addTocart }) => {
   // 처음 시작 이미지 번호는 0 => productImage
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -15,20 +15,6 @@ const SingleProductPage = ({ addToCart }) => {
   // useData 훅을 사용하여 데이터 가져오기
   const { data: product, error, isLoading } = useData(`/products/${id}`);
   //console.log(product);
-
-  // 수량 증가
-  const increaseQuantity = () => {
-    if (quantity < product.stock) {
-      setQuantity((prev) => prev + 1);
-    }
-  };
-
-  // 수량 감소
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
-    }
-  };
 
   return (
     <section className="align_center single_product">
@@ -74,7 +60,7 @@ const SingleProductPage = ({ addToCart }) => {
 
             <button
               className="search_button add_cart"
-              onClick={() => addToCart(product, quantity)}
+              onClick={() => addTocart(product, quantity)}
             >
               장바구니 추가
             </button>
