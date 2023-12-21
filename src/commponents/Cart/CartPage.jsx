@@ -3,11 +3,15 @@ import remove from "../../assets/remove.png";
 import user from "../../assets/user.webp";
 import Table from "../Common/Table";
 import QuantityInput from "../SingleProduct/QuantityInput";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 
 const CartPage = ({ cart }) => {
   const [subTotal, setSubTotal] = useState(0);
   //console.log(cart);
+
+  const userObj = useContext(UserContext);
+  console.log(userObj);
 
   useEffect(() => {
     let total = 0;
@@ -20,10 +24,13 @@ const CartPage = ({ cart }) => {
   return (
     <section className="align_center cart_page">
       <div className="align_center user_info">
-        <img src={user} alt="user profile" />
+        <img
+          src={`http://localhost:5000/profile/${userObj?.profilePic}`}
+          alt="user profile"
+        />
         <div>
-          <p className="user_name">Dooly</p>
-          <p className="user_email">dooly@naver.com</p>
+          <p className="user_name">{userObj?.name}</p>
+          <p className="user_email">{userObj?.email}</p>
         </div>
       </div>
 
