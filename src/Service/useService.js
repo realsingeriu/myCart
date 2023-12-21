@@ -8,7 +8,10 @@ export async function signup(user, profile) {
   body.append("deliveryAddress", user.deliveryAddress);
   body.append("profilePic", profile);
 
-  await apiClient.post("/user/signup", body);
+  const { data } = await apiClient.post("/user/signup", body);
+  localStorage.setItem("token", data.token);
+  // 회원가입하면 홈으로 이동
+  window.location = "/";
 }
 
 export async function login(user) {
@@ -16,5 +19,8 @@ export async function login(user) {
   body.append("email", user.email);
   body.append("password", user.password);
 
-  await apiClient.post("/user/login", body);
+  const { data } = await apiClient.post("/user/login", user);
+  localStorage.setItem("token", data.token);
+  // 로그인하면 홈으로 이동
+  window.location = "/";
 }
