@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import Loader from "../Common/Loader";
 import useData from "../../Hook/useData";
 
-const SingleProductPage = ({ addTocart }) => {
+const SingleProductPage = () => {
+  const { addTocart } = useContext(CartContext);
   // 처음 시작 이미지 번호는 0 => productImage
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);

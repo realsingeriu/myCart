@@ -5,13 +5,16 @@ import Table from "../Common/Table";
 import QuantityInput from "../SingleProduct/QuantityInput";
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import CartContext from "../../contexts/CartContext";
 
-const CartPage = ({ cart }) => {
+const CartPage = () => {
   const [subTotal, setSubTotal] = useState(0);
   //console.log(cart);
 
   const userObj = useContext(UserContext);
   console.log(userObj);
+
+  const { cart, addTocart } = useContext(CartContext);
 
   useEffect(() => {
     let total = 0;
