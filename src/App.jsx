@@ -25,9 +25,12 @@ const App = () => {
           location.reload();
         } else {
           setUser(jwtUser);
+          console.log(jwtUser);
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error decoding JWT:", error);
+    }
   }, []);
 
   return (

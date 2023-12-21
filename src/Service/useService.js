@@ -15,10 +15,6 @@ export async function signup(user, profile) {
 }
 
 export async function login(user) {
-  const body = new FormData();
-  body.append("email", user.email);
-  body.append("password", user.password);
-
   const { data } = await apiClient.post("/user/login", user);
   localStorage.setItem("token", data.token);
   // 로그인하면 홈으로 이동

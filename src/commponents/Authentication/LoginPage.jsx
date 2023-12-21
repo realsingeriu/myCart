@@ -1,18 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
 import "./LoginPage.css";
-import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   // // 리액트에서 특정 태그를 선택하는 방법
   // const passwordRef = useRef(null);
 
-  const navigate = useNavigate();
-
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  const [formError, setFormError] = useState("");
 
   const {
     register,
@@ -20,21 +14,15 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  const submitData = (formData) => {
-    console.log(formData);
+  const submitData = async (formData) => {
+    try {
+      await login(formData);
 
-    // submit 버튼 누르면 상태 초기화
-    setUser({ email: "", password: "" });
-    navigate("/"); // 로그인 성공 후 홈으로 이동
+      window.location = "/";
+    } catch (err) {
+      setFormError(err.response.data.message);
+    }
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(user);
-
-  //   // submit 버튼 누르면 상태 초기화
-  //   setUser({ email: "", password: "" });
-  // };
 
   return (
     <section className="align_center form_page">
@@ -61,7 +49,7 @@ const LoginPage = () => {
               placeholder="패스워드 입력..."
               {...register("password", {
                 required: "패스워드를 입력해주세요",
-                minLength: { value: 4, message: "패스워드는 최소 4자 이상." },
+                minLength: { value: 8, message: "패스워드는 최소 8자 이상." },
               })}
             />
             {errors.password && (
@@ -80,6 +68,8 @@ const LoginPage = () => {
           >
             비밀번호 보이게
           </button> */}
+          {formError && <em className="form_error">{formError}</em>}
+
           <button type="submit" className="search_button form_submit">
             Submit
           </button>
