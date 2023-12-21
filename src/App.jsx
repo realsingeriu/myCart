@@ -10,6 +10,8 @@ import Routing from "./commponents/Routing/Routing";
 import SingleProductPage from "./commponents/SingleProduct/SingleProductPage";
 import { jwtDecode } from "jwt-decode";
 
+setAuthToken(localStorage.getItem("token"));
+
 const App = () => {
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState([]);
