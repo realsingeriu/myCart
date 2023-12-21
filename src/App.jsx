@@ -15,6 +15,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const addTocart = (product, quantity) => {
     const updatedCart = [...cart];
+    // findIndex는 모든 배열아이템과 비교해서 참이 있으면 true를 리턴하고 없으면 -1
     const productIndex = (updatedCart.findIndex = updatedCart.findIndex(
       (item) => item.product._id === product._id
     ));
