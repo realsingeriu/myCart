@@ -14,7 +14,7 @@ const CartPage = () => {
   const userObj = useContext(UserContext);
   console.log(userObj);
 
-  const { cart, addTocart } = useContext(CartContext);
+  const { cart, addTocart, removeFromCart } = useContext(CartContext);
 
   useEffect(() => {
     let total = 0;
@@ -52,6 +52,7 @@ const CartPage = () => {
                   src={remove}
                   alt="remove icon"
                   className="cart_remove_icon"
+                  onClick={() => removeFromCart(product._id)}
                 />
               </td>
             </tr>

@@ -9,7 +9,11 @@ import ProductsPage from "./commponents/Products/ProductsPage";
 import Routing from "./commponents/Routing/Routing";
 import SingleProductPage from "./commponents/SingleProduct/SingleProductPage";
 import { jwtDecode } from "jwt-decode";
-import { addToCartAPI, getCartAPI } from "./Service/cartServices";
+import {
+  addToCartAPI,
+  getCartAPI,
+  removeFromCartAPI,
+} from "./Service/cartServices";
 import setAuthToken from "./utils/setAuthToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -71,9 +75,19 @@ const App = () => {
     getCart(); // 유저가 바뀌거나 시작시 카트정보를 가져옴
   }, [user]);
 
+  const removeFromCart = (id) => {
+    const oldCart = [...cart];
+    const newCart = oldCart.filter((item) => item.product._id !== id);
+    setCart(newCart);
+
+    removeFromCartAPI(id).catch((err) => {
+      toast.error("장바구니 상품 삭제 에러");
+    });
+  };
+
   return (
     <UserContext.Provider value={user}>
-      <CartContext.Provider value={{ cart, addTocart }}>
+      <CartContext.Provider value={{ cart, addTocart, removeFromCart }}>
         <div className="app">
           {/* 유저정보를 app에서 navbar로 전달 */}
           <Navbar user={user} cartCount={cart.length} />

@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./SingleProductPage.css";
 import QuantityInput from "./QuantityInput";
 import { useParams } from "react-router-dom";
 import Loader from "../Common/Loader";
 import useData from "../../Hook/useData";
+import CartContext from "../../contexts/CartContext";
 
 const SingleProductPage = () => {
   const { addTocart } = useContext(CartContext);
