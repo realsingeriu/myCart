@@ -10,7 +10,7 @@ const SignupPage = () => {
   const navigate = useNavigate();
   // 프로필 이미지 상태 관리
   const [profilePic, setProfilePic] = useState(null);
-
+  const [formError, setFormError] = useState("");
   // react-hook-form 에서 제공하는 hook 사용
   const {
     register,
@@ -21,14 +21,15 @@ const SignupPage = () => {
 
   // 폼입력창에 작성한 데이터 객체 formData와 이미지파일을 signup 함수에 전달
   const submitData = async (formData) => {
-    await signup(formData, profilePic);
-
-    // 로그인 페이지로 이동
-    navigate("/login");
+    try {
+      await signup(formData, profilePic);
+    } catch (error) {
+      setFormError(error.response.data.message);
+    }
   };
 
   // 프로필 이미지 상태 확인
-  console.log(profilePic);
+  //console.log(profilePic);
 
   return (
     <section className="align_center form_page">
@@ -156,6 +157,9 @@ const SignupPage = () => {
             )}
           </div>
         </div>
+        {/* 가입 에러 발생시 표시하기 */}
+        {formError && <em className="form_error">{formError}</em>}
+
         {/* 입력 완료 버튼  */}
         <button className="search_button form_submit" type="submit">
           Submit
