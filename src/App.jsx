@@ -14,22 +14,16 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    try {
-      const jwt = localStorage.getItem("token");
-      if (jwt) {
-        const jwtUser = jwtDecode(jwt);
-
-        // 토큰 유효가능 시간 설정 유효기간 지난 토큰의 정보는 삭제
-        if (Date.now() >= jwtUser.exp * 1000) {
-          localStorage.removeItem("token");
-          location.reload();
-        } else {
-          setUser(jwtUser);
-          console.log(jwtUser);
-        }
-      }
-    } catch (error) {
-      console.error("Error decoding JWT:", error);
+    //시작시 로컬스토리지의 토큰정보를 읽어옴
+    const jwt = localStorage.getItem("token");
+    if (jwt == null || jwt == "") return;
+    const jwtUser = jwtDecode(jwt);
+    //현재 시간과 토큰종료 시간을 비교해서 만료된 토큰은 삭제한다.
+    if (Date.now() >= jwtUser.exp * 1000) {
+      localStorage.removeItem("token");
+      location.reload();
+    } else {
+      setUser(jwtUser);
     }
   }, []);
 
