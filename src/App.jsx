@@ -9,6 +9,8 @@ import ProductsPage from "./commponents/Products/ProductsPage";
 import Routing from "./commponents/Routing/Routing";
 import SingleProductPage from "./commponents/SingleProduct/SingleProductPage";
 import { jwtDecode } from "jwt-decode";
+import { addToCartAPI } from "./Service/cartServices";
+import setAuthToken from "./utils/setAuthToken";
 
 setAuthToken(localStorage.getItem("token"));
 
@@ -27,6 +29,14 @@ const App = () => {
       updatedCart[productIndex].quantity += quantity;
     }
     setCart(updatedCart);
+    // 백엔드 서버에 저장하기
+    addToCartAPI(product._id, quantity)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   };
 
   useEffect(() => {
