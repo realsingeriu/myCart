@@ -115,7 +115,7 @@ const App = () => {
   return (
     <UserContext.Provider value={user}>
       <CartContext.Provider
-        value={{ cart, addTocart, removeFromCart, updateCart }}
+        value={{ cart, addTocart, removeFromCart, updateCart, setCart }}
       >
         <div className="app">
           {/* 유저정보를 app에서 navbar로 전달 */}
