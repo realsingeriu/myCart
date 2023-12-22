@@ -46,6 +46,7 @@ const LoginPage = () => {
             <label htmlFor="password">Password</label>
             <input
               id="password"
+              type="password"
               className="form_text_input"
               placeholder="패스워드 입력..."
               {...register("password", {
