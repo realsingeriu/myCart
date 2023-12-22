@@ -38,9 +38,9 @@ const ProductsList = () => {
       const products = [...data.products];
 
       if (sortBy === "price desc") {
-        setSortedProducts(products.sort((a, b) => b.price - a.price));
+        setSortedProducts(products.sort((a, b) => b.price - a.price)); // 큰순 b-a
       } else if (sortBy === "price asc") {
-        setSortedProducts(products.sort((a, b) => a.price - b.price));
+        setSortedProducts(products.sort((a, b) => a.price - b.price)); // 작은순 a-b
       } else if (sortBy === "rate desc") {
         setSortedProducts(
           products.sort((a, b) => b.reviews.rate - a.reviews.rate)
