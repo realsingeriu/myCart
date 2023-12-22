@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 import Loader from "../Common/Loader";
 import useData from "../../Hook/useData";
 import CartContext from "../../contexts/CartContext";
+import UserContext from "../../contexts/UserContext";
 
 const SingleProductPage = () => {
   const { addTocart } = useContext(CartContext);
+  const user = useContext(UserContext);
   // 처음 시작 이미지 번호는 0 => productImage
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -50,22 +52,26 @@ const SingleProductPage = () => {
             <p className="single_product_price">
               ￦ {product.price.toLocaleString("ko-KR")} 원
             </p>
+            {/* user && 로그인한 유저에게만 구매 장바구니 가능 설정  */}
+            {user && (
+              <>
+                <h2 className="quantity_title">구매개수:</h2>
+                <div className="align_center quantity_input">
+                  <QuantityInput
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                    stock={product.stock}
+                  />
+                </div>
 
-            <h2 className="quantity_title">구매개수:</h2>
-            <div className="align_center quantity_input">
-              <QuantityInput
-                quantity={quantity}
-                setQuantity={setQuantity}
-                stock={product.stock}
-              />
-            </div>
-
-            <button
-              className="search_button add_cart"
-              onClick={() => addTocart(product, quantity)}
-            >
-              장바구니 추가
-            </button>
+                <button
+                  className="search_button add_cart"
+                  onClick={() => addTocart(product, quantity)}
+                >
+                  장바구니 추가
+                </button>
+              </>
+            )}
           </div>
         </>
       )}
