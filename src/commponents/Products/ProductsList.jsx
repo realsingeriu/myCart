@@ -47,9 +47,11 @@ const ProductsList = () => {
           data.products.map((product) => (
             <ProductCard
               key={product._id}
+              product={product}
               id={product._id}
               image={product.images[0]}
               price={product.price}
+              title={product.title}
               rating={product.reviews.rate}
               ratingCounts={product.reviews.counts}
               stock={product.stock}
