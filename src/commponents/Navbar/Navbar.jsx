@@ -24,7 +24,9 @@ const Navbar = ({ user, cartCount }) => {
   return (
     <nav className="align_center navbar">
       <div className="align_center">
-        <h1 className="navbar_heading">Iphone-Cart</h1>
+        <NavLink to="/" className="navbar_heading">
+          Iphone-Cart
+        </NavLink>
         <form className="align_center navbar_form" onSubmit={handleSubmit}>
           <input
             type="text"

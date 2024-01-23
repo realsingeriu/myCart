@@ -25,6 +25,8 @@ const LoginPage = () => {
     }
   };
 
+  const passwordRef = useRef(null);
+
   return (
     <section className="align_center form_page">
       <form onSubmit={handleSubmit(submitData)} className="authentication_form">
@@ -47,6 +49,7 @@ const LoginPage = () => {
             <input
               id="password"
               type="password"
+              ref={passwordRef}
               className="form_text_input"
               placeholder="패스워드 입력..."
               {...register("password", {
@@ -60,7 +63,7 @@ const LoginPage = () => {
           </div>
           {/* <button
             type="button"
-            onClick={() => console.log(passwordRef.current.type = "password")}
+            onClick={() => console.log((passwordRef.current.type = "password"))}
           >
             비밀번호 숨기기
           </button>
